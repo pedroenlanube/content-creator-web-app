@@ -6,14 +6,14 @@
 
     <groupId>dev.pedroenlanube</groupId>
     <artifactId>serverless-back</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <modules>
         <module>domain-core</module>
         <module>infrastructure-aws</module>
-        <module>feature-posts</module>
-        <module>app-bootstrap</module>
+        <module>ctx-content</module>
+        <module>ctx-coaching</module>
     </modules>
 
     <properties>
@@ -21,8 +21,12 @@
         <maven.compiler.target>25</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <!-- Core -->
         <spring-boot.version>4.0.0</spring-boot.version>
         <aws.sdk.version>2.30.0</aws.sdk.version>
+
+        <!-- Utilities - Boilerplate -->
+        <lombok.version>1.18.46</lombok.version>
     </properties>
 
     <dependencyManagement>
@@ -41,6 +45,14 @@
                 <version>${aws.sdk.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <!-- Utilidades - Boilerplate -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <scope>provided</scope>
+                <version>${lombok.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
