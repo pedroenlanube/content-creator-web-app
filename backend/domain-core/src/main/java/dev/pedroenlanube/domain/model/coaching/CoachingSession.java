@@ -17,6 +17,7 @@ public class CoachingSession {
     private TimeSlot slot;
     private CoachingState state;
     private String feedback;
+    private String previousNotes;
 
     public CoachingSession(String id, String creatorId, TimeSlot slot) {
         this.id = Objects.requireNonNull(id, "The coaching session ID is mandatory");
@@ -40,5 +41,16 @@ public class CoachingSession {
             throw new IllegalStateException("The coaching session is already completed");
         this.subscriberId = null;
         this.state = CoachingState.CANCELLED;
+    }
+
+    public void complete() {
+        if(this.state.equals(CoachingState.COMPLETED))
+            throw new IllegalStateException("The coaching session is already completed");
+        this.state = CoachingState.COMPLETED;
+    }
+
+    public void updateDetails(String feedback, String previousNotes) {
+        this.feedback = Objects.requireNonNull(feedback, "The feedback is mandatory");
+        this.previousNotes = Objects.requireNonNull(previousNotes, "The previous notes are mandatory");
     }
 }

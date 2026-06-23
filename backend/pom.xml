@@ -14,6 +14,7 @@
         <module>infrastructure-aws</module>
         <module>ctx-content</module>
         <module>ctx-coaching</module>
+        <module>ctx-user</module>
     </modules>
 
     <properties>
