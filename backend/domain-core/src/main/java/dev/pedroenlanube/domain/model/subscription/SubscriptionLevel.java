@@ -1,18 +1,14 @@
 package dev.pedroenlanube.domain.model.subscription;
 
 import dev.pedroenlanube.domain.model.subscription.vo.Price;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.Objects;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class SubscriptionLevel {
-    private String id;
-    private String creatorId;
+    private final String id;
+    private final String creatorId;
     private String name;
     private String description;
     private Price monthlyPrice;
