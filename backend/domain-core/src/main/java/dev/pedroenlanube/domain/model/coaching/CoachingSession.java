@@ -1,18 +1,14 @@
 package dev.pedroenlanube.domain.model.coaching;
 
 import dev.pedroenlanube.domain.model.coaching.vo.TimeSlot;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.Objects;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class CoachingSession {
-    private String id;
-    private String creatorId;
+    private final String id;
+    private final String creatorId;
     private String subscriberId;
     private TimeSlot slot;
     private CoachingState state;

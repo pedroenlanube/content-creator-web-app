@@ -1,19 +1,15 @@
 package dev.pedroenlanube.domain.model.content;
 
 import dev.pedroenlanube.domain.model.content.vo.MultimediaResource;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 import java.util.Objects;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Post {
-    private String id;
-    private String creatorId;
+    private final String id;
+    private final String creatorId;
     private String title;
     private String text;
     private MultimediaResource resource;
