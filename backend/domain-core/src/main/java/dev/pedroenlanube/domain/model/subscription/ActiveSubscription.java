@@ -1,20 +1,16 @@
 package dev.pedroenlanube.domain.model.subscription;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class ActiveSubscription {
-    private String id;
-    private String subscriberId;
-    private String subscriptionLevelId;
+    private final String id;
+    private final String subscriberId;
+    private final String subscriptionLevelId;
     private Instant initDate;
     private Instant endDate;
     private SubscriptionState state;
