@@ -17,6 +17,28 @@
         <maven.compiler.source>25</maven.compiler.source>
         <maven.compiler.target>25</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Own dependencies versions -->
+        <domain-core.version>1.0.0-SNAPSHOT</domain-core.version>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>dev.pedroenlanube</groupId>
+            <artifactId>domain-core</artifactId>
+            <version>${domain-core.version}</version>
+        </dependency>
+
+        <!-- Utilities - Boilerplate -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

@@ -48,7 +48,7 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- Utilidades - Boilerplate -->
+            <!-- Utilities - Boilerplate -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
