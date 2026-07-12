@@ -11,7 +11,7 @@
 
     <modules>
         <module>domain-core</module>
-        <module>infrastructure-aws</module>
+        <module>cloud-infrastructure-common</module>
         <module>ctx-content</module>
         <module>ctx-coaching</module>
         <module>ctx-user</module>
@@ -23,8 +23,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- Core -->
-        <spring-boot.version>4.0.0</spring-boot.version>
-        <aws.sdk.version>2.30.0</aws.sdk.version>
+        <spring-boot.version>4.1.0</spring-boot.version>
+        <aws.sdk.version>2.47.5</aws.sdk.version>
 
         <!-- Utilities - Boilerplate -->
         <lombok.version>1.18.46</lombok.version>
@@ -57,5 +57,26 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.13.0</version>
+                    <configuration>
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>${lombok.version}</version>
+                            </path>
+                        </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>

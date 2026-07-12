@@ -6,15 +6,18 @@ import dev.pedroenlanube.domain.model.coaching.command.ReserveSessionCmd;
 import dev.pedroenlanube.domain.port.in.strategy.DomainConsumerStrategy;
 import dev.pedroenlanube.domain.port.out.coaching.LoadSessionPort;
 import dev.pedroenlanube.domain.port.out.coaching.SaveSessionPort;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 public class AsyncDeckReviewStrategy implements DomainConsumerStrategy<ReserveSessionCmd> {
 
     private final LoadSessionPort loadPort;
     private final SaveSessionPort savePort;
+
+    public AsyncDeckReviewStrategy(LoadSessionPort loadPort, SaveSessionPort savePort) {
+        this.loadPort = loadPort;
+        this.savePort = savePort;
+    }
 
     @Override
     public boolean isApplicable(ReserveSessionCmd cmd) {
