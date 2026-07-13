@@ -1,6 +1,7 @@
 package dev.pedroenlanube.domain.model.coaching;
 
 import dev.pedroenlanube.domain.model.coaching.vo.TimeSlot;
+import dev.pedroenlanube.domain.model.user.vo.SecureUrl;
 import lombok.Getter;
 
 import java.util.Objects;
@@ -12,6 +13,8 @@ public class CoachingSession {
     private String subscriberId;
     private TimeSlot slot;
     private CoachingState state;
+    private SessionType type;
+    private SecureUrl resourceUrl;
     private String feedback;
     private String previousNotes;
 
@@ -21,13 +24,30 @@ public class CoachingSession {
         this.slot = Objects.requireNonNull(slot, "The time slot is mandatory");
         this.state = CoachingState.AVAILABLE;
         this.subscriberId = null;
+        this.type = null;
+        this.resourceUrl = null;
     }
 
-    public void book(String subscriberId) {
-        if(!this.state.equals(CoachingState.AVAILABLE))
-            throw new IllegalStateException("The coaching session is not available");
+    public void reserveForLiveMatch(String subscriberId) {
+        ensureIsAvailable();
+
         this.subscriberId = Objects.requireNonNull(subscriberId, "The subscriber ID is mandatory");
+        this.type = SessionType.LIVE_MATCH;
         this.state = CoachingState.BOOKED;
+    }
+
+    public void reserveForAsyncReview(String subscriberId, SecureUrl resourceUrl) {
+        ensureIsAvailable();
+
+        this.subscriberId = Objects.requireNonNull(subscriberId, "The subscriber ID is mandatory");
+        this.resourceUrl = Objects.requireNonNull(resourceUrl, "The resource URL is mandatory for async reviews");
+        this.type = SessionType.ASYNC_REVIEW;
+        this.state = CoachingState.BOOKED;
+    }
+
+    private void ensureIsAvailable() {
+        if (this.state != CoachingState.AVAILABLE)
+            throw new IllegalStateException("The coaching session is not available (Current state: " + this.state + ")");
     }
 
     public void cancel() {
@@ -36,7 +56,9 @@ public class CoachingSession {
         if(this.state.equals(CoachingState.COMPLETED))
             throw new IllegalStateException("The coaching session is already completed");
         this.subscriberId = null;
-        this.state = CoachingState.CANCELLED;
+        this.type = null;
+        this.resourceUrl = null;
+        this.state = CoachingState.AVAILABLE;
     }
 
     public void complete() {
