@@ -2,5 +2,5 @@ package dev.pedroenlanube.domain.model.coaching.command;
 
 import java.time.Instant;
 
-public record CreateSlotCmd(String creadorId, Instant init, Instant fin) {
+public record CreateSlotCmd(String creatorId, Instant init, Instant fin) {
 }

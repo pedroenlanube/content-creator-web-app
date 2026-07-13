@@ -20,7 +20,7 @@ public class Subscriber {
     public Subscriber(String id, String username, Email email) {
         this.id = Objects.requireNonNull(id, "The subscriber ID is mandatory");
         this.username = new Username(username.trim());
-        this.email = Objects.requireNonNull(email, "The email is mandaroty");
+        this.email = Objects.requireNonNull(email, "The email is mandatory");
         this.createdAt = Instant.now();
         this.status = AccountStatus.ACTIVE;
     }
