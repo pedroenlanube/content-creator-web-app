@@ -24,5 +24,6 @@ public class UserDynamoRepositoryAdapter extends BaseDynamoRepositoryAdapter<Use
                 .sortValue("PROFILE")
                 .build();
         return findById(key);
+
     }
 }
