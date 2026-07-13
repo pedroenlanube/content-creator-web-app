@@ -2,16 +2,17 @@ name: Cloud Infrastructure Common CI
 
 on:
   push:
-    branches: [ 'feature/**' ]
+    branches:
+      - 'feature/**'
     paths:
-      - 'cloud-infrastructure-common/**'
-      - 'domain-core/**'
-      - 'pom.xml'
+      - 'backend/cloud-infrastructure-common/**'
+      - 'backend/domain-core/**'
+      - 'backend/pom.xml'
   pull_request:
     branches: [ develop, master ]
     paths:
-      - 'cloud-infrastructure-common/**'
-      - 'domain-core/**'
+      - 'backend/cloud-infrastructure-common/**'
+      - 'backend/domain-core/**'
       - 'pom.xml'
 
 permissions:

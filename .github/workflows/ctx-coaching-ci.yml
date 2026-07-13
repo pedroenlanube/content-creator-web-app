@@ -2,17 +2,18 @@ name: Coaching Context CI
 
 on:
   push:
-    branches: [ 'feature/**' ]
+    branches:
+      - 'feature/**'
     paths:
-      - 'ctx-coaching/**'
-      - 'domain-core/**'
-      - 'pom.xml'
+      - 'backend/ctx-coaching/**'
+      - 'backend/domain-core/**'
+      - 'backend/pom.xml'
   pull_request:
     branches: [ develop, master ]
     paths:
-      - 'ctx-coaching/**'
-      - 'domain-core/**'
-      - 'pom.xml'
+      - 'backend/ctx-coaching/**'
+      - 'backend/domain-core/**'
+      - 'backend/pom.xml'
 
 permissions:
   contents: read
