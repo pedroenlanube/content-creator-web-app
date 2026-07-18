@@ -43,15 +43,14 @@ jobs:
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
-      - name: Build, Test, Check Coverage and Analyze with SonarQube
+      - name: Build, Test, Check Coverage and Analyze with SonarCloud
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-            -pl ${{ inputs.module_name }} -am \
-            -Dsonar.projectKey=serverless-back_${{ inputs.module_name }} \
-            -Dsonar.projectName="${{ inputs.module_name }}"
+        run: >
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar 
+          -Dsonar.organization=${{ vars.SONAR_ORGANIZATION }}
+          -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }}
 
       - name: Upload Test Reports
         uses: actions/upload-artifact@v4
