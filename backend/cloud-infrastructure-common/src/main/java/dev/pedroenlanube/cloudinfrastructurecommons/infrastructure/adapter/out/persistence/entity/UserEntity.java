@@ -17,5 +17,4 @@ public class UserEntity extends BaseEntity {
     private String username;
     private String email;
     private String status;
-
 }
