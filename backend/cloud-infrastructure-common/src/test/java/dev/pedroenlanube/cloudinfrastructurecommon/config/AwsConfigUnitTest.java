@@ -1,7 +1,7 @@
 package dev.pedroenlanube.cloudinfrastructurecommon.config;
 
-import dev.pedroenlanube.cloudinfrastructurecommons.infrastructure.config.AwsConfig;
-import dev.pedroenlanube.cloudinfrastructurecommons.infrastructure.config.DynamoDbConfig;
+import dev.pedroenlanube.cloudcommons.infrastructure.config.AwsConfig;
+import dev.pedroenlanube.cloudcommons.infrastructure.config.DynamoDbConfig;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

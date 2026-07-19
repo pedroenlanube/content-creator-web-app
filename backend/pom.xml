@@ -26,6 +26,13 @@
         <spring-boot.version>4.1.0</spring-boot.version>
         <aws.sdk.version>2.47.5</aws.sdk.version>
 
+        <!-- Own dependencies versions -->
+        <domain-core.version>1.0.0-SNAPSHOT</domain-core.version>
+
+        <!-- AWS dependencies version -->
+        <aws.lambda.events.version>3.11.4</aws.lambda.events.version>
+        <aws.lambda.core.version>1.2.3</aws.lambda.core.version>
+
         <!-- Utilities - Boilerplate -->
         <lombok.version>1.18.46</lombok.version>
 

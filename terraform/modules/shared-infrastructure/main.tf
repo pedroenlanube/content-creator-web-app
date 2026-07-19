@@ -11,7 +11,7 @@ resource "aws_dynamodb_table" "main" {
   hash_key       = "PK"
   range_key      = "SK"
 
-  # Atributos principales
+  # Table attributes
   attribute {
     name = "PK"
     type = "S"
@@ -22,7 +22,7 @@ resource "aws_dynamodb_table" "main" {
     type = "S"
   }
 
-  # Atributos GSI1
+  # Table attributes for GSI1
   attribute {
     name = "GSI1PK"
     type = "S"
@@ -33,7 +33,7 @@ resource "aws_dynamodb_table" "main" {
     type = "S"
   }
 
-  # Atributos GSI2
+  # Table attributes for GSI2
   attribute {
     name = "GSI2PK"
     type = "S"
@@ -44,7 +44,7 @@ resource "aws_dynamodb_table" "main" {
     type = "S"
   }
 
-  # Índice Secundario Global 1
+  # Global Secondary Index 1
   global_secondary_index {
     name               = "GSI1"
     hash_key           = "GSI1PK"
@@ -52,7 +52,7 @@ resource "aws_dynamodb_table" "main" {
     projection_type    = "ALL"
   }
 
-  # Índice Secundario Global 2
+  # Global Secondary Index 2
   global_secondary_index {
     name               = "GSI2"
     hash_key           = "GSI2PK"

@@ -1,4 +1,4 @@
-package dev.pedroenlanube.cloudinfrastructurecommons.infrastructure.config;
+package dev.pedroenlanube.cloudcommons.infrastructure.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
