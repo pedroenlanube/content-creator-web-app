@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  localstack:
+    container_name: localstack-content-creator
+    image: localstack/localstack:latest
+    ports:
+      - "127.0.0.1:4566:4566"            # El puerto principal donde escuchan todos los servicios (DynamoDB, Cognito, etc.)
+      - "127.0.0.1:4510-4559:4510-4559"  # Rango de puertos para servicios externos
+    environment:
+      # LocalStack moderno carga los servicios bajo demanda (lazy loading), no hace falta especificarlos.
+      - DEBUG=${DEBUG:-0}
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "./.localstack:/var/lib/localstack" # Persistencia local para que no pierdas datos entre reinicios
+      - "/var/run/docker.sock:/var/run/docker.sock" # Permite a LocalStack levantar Lambdas dentro de tu Docker
