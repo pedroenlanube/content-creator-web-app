@@ -1,4 +1,4 @@
-package dev.pedroenlanube.cloudinfrastructurecommons.infrastructure.adapter.out.persistence.entity;
+package dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.entity;
 
 public enum EntityType {
     USER,

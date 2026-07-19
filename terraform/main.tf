@@ -28,12 +28,25 @@ provider "aws" {
   }
 }
 
-# 1. Infraestructura compartida (DynamoDB, API Gateway)
+# Shared infrastructure common to all services (DynamoDB, API Gateway)
 module "shared_infrastructure" {
   source = "./modules/shared-infrastructure"
 
   environment  = var.environment
   project_name = var.project_name
+}
+
+# Cognito as Identity Provider
+module "cognito" {
+  source = "./modules/cognito"
+  environment  = var.environment
+  project_name = var.project_name
+
+  # Conditional logic: If the environment is ‘pro’, use the real domain. Otherwise, use localhost.
+  callback_urls = var.environment == "pro" ? ["https://pedroenlanube.com/api/auth/callback/cognito"] :
+    ["http://localhost:3000/api/auth/callback/cognito"]
+
+  logout_urls   = var.environment == "pro" ? ["https://pedroenlanube.com"] : ["http://localhost:3000"]
 }
 
 # 2. Cognito Integration Service

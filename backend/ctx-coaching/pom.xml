@@ -13,10 +13,6 @@
     <packaging>jar</packaging>
     <version>1.0.0-SNAPSHOT</version>
 
-    <properties>
-        <!-- Own dependencies versions -->
-        <domain-core.version>1.0.0-SNAPSHOT</domain-core.version>
-    </properties>
 
     <dependencies>
         <dependency>
