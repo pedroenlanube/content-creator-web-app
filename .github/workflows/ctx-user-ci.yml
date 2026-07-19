@@ -1,0 +1,29 @@
+name: Coaching Context CI
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+    paths:
+      - 'backend/ctx-user/**'
+      - 'backend/domain-core/**'
+      - 'backend/pom.xml'
+  pull_request:
+    branches: [ develop, master ]
+    paths:
+      - 'backend/ctx-user/**'
+      - 'backend/domain-core/**'
+      - 'backend/pom.xml'
+
+permissions:
+  contents: read
+  pull-requests: write
+  statuses: write
+
+jobs:
+  call-ci-workflow:
+    uses: ./.github/workflows/reusable-ci.yml
+    with:
+      module_name: 'ctx-user'
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
