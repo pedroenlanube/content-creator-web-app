@@ -4,5 +4,4 @@ import dev.pedroenlanube.domain.model.user.User;
 
 import java.util.function.Consumer;
 
-public interface SaveSubscriberPort extends Consumer<User> {
-}
+public interface SaveUserPort extends Consumer<User> { }

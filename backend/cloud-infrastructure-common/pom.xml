@@ -25,6 +25,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Domain Core -->
+        <dependency>
+            <groupId>dev.pedroenlanube</groupId>
+            <artifactId>domain-core</artifactId>
+            <version>${domain-core.version}</version>
+        </dependency>
+
         <!-- AWS SDK -->
         <dependency>
             <groupId>software.amazon.awssdk</groupId>

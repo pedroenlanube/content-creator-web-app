@@ -7,12 +7,10 @@ import dev.pedroenlanube.domain.model.user.vo.Username;
 import lombok.Getter;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Getter
-public class Creator {
+public class User {
     private final String id;
     private Username username;
     private AccountStatus status;
@@ -22,8 +20,10 @@ public class Creator {
     private SecureUrl bannerUrl;
     private List<SocialMediaLink> socialMediaLinks;
     private final Instant createdAt;
+    private Set<UserRole> roles;
+    private SubscriptionTier subscriptionTier;
 
-    public Creator (String id, String username, Email email) {
+    public User(String id, String username, Email email) {
         this.id = Objects.requireNonNull(id, "The creator ID is mandatory");
         this.username = new Username(username.trim());
         this.email = Objects.requireNonNull(email, "The email is mandatory");
@@ -31,6 +31,25 @@ public class Creator {
         this.createdAt = Instant.now();
         this.socialMediaLinks = List.of();
         this.biography = "";
+        this.roles = new HashSet<>(Set.of(UserRole.USER));
+        this.subscriptionTier = SubscriptionTier.NONE;
+    }
+
+    private User(String id, Username username, AccountStatus status, Email email,
+                 String biography, SecureUrl avatarUrl, SecureUrl bannerUrl,
+                 List<SocialMediaLink> socialMediaLinks, Instant createdAt,
+                 Set<UserRole> roles, SubscriptionTier subscriptionTier) {
+        this.id = id;
+        this.username = username;
+        this.status = status;
+        this.email = email;
+        this.biography = biography;
+        this.avatarUrl = avatarUrl;
+        this.bannerUrl = bannerUrl;
+        this.socialMediaLinks = socialMediaLinks;
+        this.createdAt = createdAt;
+        this.roles = roles != null ? roles : new HashSet<>();
+        this.subscriptionTier = subscriptionTier;
     }
 
     public void updateProfile(String newUsername, String newBiography, String newAvatarUrl,
@@ -67,5 +86,46 @@ public class Creator {
         if(url == null || url.isBlank())
             return;
 
+    }
+
+    public void grantRole(UserRole role) {
+        this.roles.add(role);
+    }
+
+    public void revokeRole(UserRole role) {
+        this.roles.remove(role);
+    }
+
+    public void upgradeSubscription(SubscriptionTier newTier) {
+        if(this.status != AccountStatus.ACTIVE)
+            throw new IllegalStateException("Can't upgrade an inactive profile");
+
+        this.subscriptionTier = Objects.requireNonNull(newTier, "Tier cannot be null");
+        this.grantRole(UserRole.SUBSCRIBER);
+    }
+
+    public void cancelSubscription() {
+        this.subscriptionTier = SubscriptionTier.NONE;
+        this.revokeRole(UserRole.SUBSCRIBER);
+    }
+
+    public static User reconstitute(String id, String username, String email, String status,
+                                    String biography, String avatarUrl, String bannerUrl,
+                                    List<SocialMediaLink> socialMediaLinks,
+                                    Set<UserRole> roles, SubscriptionTier subscriptionTier,
+                                    Instant createdAt) {
+        return new User(
+                id,
+                new Username(username),
+                AccountStatus.valueOf(status),
+                new Email(email),
+                biography,
+                avatarUrl != null ? new SecureUrl(avatarUrl) : null,
+                bannerUrl != null ? new SecureUrl(bannerUrl) : null,
+                socialMediaLinks != null ? new ArrayList<>(socialMediaLinks) : new ArrayList<>(),
+                createdAt,
+                roles,
+                subscriptionTier
+        );
     }
 }
