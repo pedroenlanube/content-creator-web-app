@@ -1,4 +1,4 @@
-name: Coaching Context CI
+name: Domain Core CI
 
 on:
   push:

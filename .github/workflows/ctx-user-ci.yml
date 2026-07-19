@@ -1,4 +1,4 @@
-name: Coaching Context CI
+name: User Context CI
 
 on:
   push:
@@ -6,12 +6,14 @@ on:
       - 'feature/**'
     paths:
       - 'backend/ctx-user/**'
+      - 'backend/cloud-infrastructure-common/**'
       - 'backend/domain-core/**'
       - 'backend/pom.xml'
   pull_request:
     branches: [ develop, master ]
     paths:
       - 'backend/ctx-user/**'
+      - 'backend/cloud-infrastructure-common/**'
       - 'backend/domain-core/**'
       - 'backend/pom.xml'
 
