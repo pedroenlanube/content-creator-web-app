@@ -3,12 +3,12 @@ package dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.ma
 import dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.entity.EntityType;
 import dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.entity.SocialMediaLinkEntity;
 import dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.entity.UserEntity;
-import dev.pedroenlanube.domain.model.user.User;
-import dev.pedroenlanube.domain.model.user.UserRole;
-import dev.pedroenlanube.domain.model.user.SubscriptionTier;
-import dev.pedroenlanube.domain.model.user.vo.SocialMediaLink;
-import dev.pedroenlanube.domain.model.user.SocialMediaType;
-import dev.pedroenlanube.domain.model.user.vo.SecureUrl;
+import dev.pedroenlanube.domain.core.model.user.User;
+import dev.pedroenlanube.domain.core.model.user.UserRole;
+import dev.pedroenlanube.domain.core.model.user.SubscriptionTier;
+import dev.pedroenlanube.domain.core.model.user.vo.SocialMediaLink;
+import dev.pedroenlanube.domain.core.model.user.SocialMediaType;
+import dev.pedroenlanube.domain.core.model.user.vo.SecureUrl;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

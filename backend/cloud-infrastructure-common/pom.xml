@@ -25,14 +25,14 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Domain Core -->
+        <!-- Own dependencies -->
         <dependency>
             <groupId>dev.pedroenlanube</groupId>
             <artifactId>domain-core</artifactId>
             <version>${domain-core.version}</version>
         </dependency>
 
-        <!-- AWS SDK -->
+        <!-- AWS SDK dependencies-->
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>dynamodb-enhanced</artifactId>

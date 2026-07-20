@@ -2,7 +2,10 @@ package dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence;
 
 import dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.entity.UserEntity;
 import dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.mapper.UserMapper;
-import dev.pedroenlanube.domain.port.out.user.*;
+import dev.pedroenlanube.domain.core.port.out.user.DeleteUserPort;
+import dev.pedroenlanube.domain.core.port.out.user.FindUserByIdPort;
+import dev.pedroenlanube.domain.core.port.out.user.SaveUserPort;
+import dev.pedroenlanube.domain.core.port.out.user.UpdateUserPort;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;

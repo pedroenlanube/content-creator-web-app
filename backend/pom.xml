@@ -15,6 +15,7 @@
         <module>ctx-content</module>
         <module>ctx-coaching</module>
         <module>ctx-user</module>
+        <module>domain-application</module>
     </modules>
 
     <properties>
@@ -28,6 +29,8 @@
 
         <!-- Own dependencies versions -->
         <domain-core.version>1.0.0-SNAPSHOT</domain-core.version>
+        <domain-application.version>1.0.0-SNAPSHOT</domain-application.version>
+        <cloud-infrastructure-common.version>1.0.0-SNAPSHOT</cloud-infrastructure-common.version>
 
         <!-- AWS dependencies version -->
         <aws.lambda.events.version>3.11.4</aws.lambda.events.version>
@@ -91,6 +94,9 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
+                    <configuration>
+                        <argLine>-XX:+EnableDynamicAgentLoading</argLine>
+                    </configuration>
                 </plugin>
 
                 <plugin>

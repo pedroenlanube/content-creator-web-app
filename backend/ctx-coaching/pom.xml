@@ -15,11 +15,13 @@
 
 
     <dependencies>
+        <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
 
+        <!-- Own dependencies -->
         <dependency>
             <groupId>dev.pedroenlanube</groupId>
             <artifactId>domain-core</artifactId>

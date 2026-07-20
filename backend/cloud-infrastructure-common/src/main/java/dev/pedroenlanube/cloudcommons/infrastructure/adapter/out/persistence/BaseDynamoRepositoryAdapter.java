@@ -1,14 +1,11 @@
 package dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence;
 
-import dev.pedroenlanube.domain.port.out.repository.QueryableRepositoryPort;
+import dev.pedroenlanube.domain.core.port.out.repository.QueryableRepositoryPort;
 import lombok.extern.slf4j.Slf4j;
 import software.amazon.awssdk.enhanced.dynamodb.*;
 import software.amazon.awssdk.enhanced.dynamodb.model.QueryConditional;
-import software.amazon.awssdk.enhanced.dynamodb.model.ScanEnhancedRequest;
-import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Slf4j
