@@ -1,6 +1,6 @@
 package dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence;
 
-import dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.entity.UserEntity;
+import dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.entity.user.UserEntity;
 import dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.mapper.UserMapper;
 import dev.pedroenlanube.domain.core.port.out.user.DeleteUserPort;
 import dev.pedroenlanube.domain.core.port.out.user.FindUserByIdPort;

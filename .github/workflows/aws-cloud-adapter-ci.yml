@@ -1,17 +1,17 @@
-name: Cloud Infrastructure Common CI
+name: AWS Cloud Adapter CI
 
 on:
   push:
     branches:
       - 'feature/**'
     paths:
-      - 'backend/cloud-infrastructure-common/**'
+      - 'backend/aws-cloud-adapter/**'
       - 'backend/domain-core/**'
       - 'backend/pom.xml'
   pull_request:
     branches: [ develop, master ]
     paths:
-      - 'backend/cloud-infrastructure-common/**'
+      - 'backend/aws-cloud-adapter/**'
       - 'backend/domain-core/**'
       - 'backend/pom.xml'
 
@@ -24,6 +24,6 @@ jobs:
   call-ci-workflow:
     uses: ./.github/workflows/reusable-ci.yml
     with:
-      module_name: 'cloud-infrastructure-common'
+      module_name: 'aws-cloud-adapter'
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

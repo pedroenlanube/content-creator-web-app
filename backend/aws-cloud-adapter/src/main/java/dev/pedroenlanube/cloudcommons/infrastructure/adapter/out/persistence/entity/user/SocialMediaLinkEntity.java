@@ -1,4 +1,4 @@
-package dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.entity;
+package dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.entity.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

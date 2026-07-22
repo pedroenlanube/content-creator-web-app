@@ -1,5 +1,6 @@
-package dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.entity;
+package dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.entity.user;
 
+import dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.entity.base.MutableDynamoEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
@@ -15,7 +16,7 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 @SuperBuilder
 @DynamoDbBean
-public class UserEntity extends BaseEntity {
+public class UserEntity extends MutableDynamoEntity {
     private String sub;
     private String username;
     private String email;

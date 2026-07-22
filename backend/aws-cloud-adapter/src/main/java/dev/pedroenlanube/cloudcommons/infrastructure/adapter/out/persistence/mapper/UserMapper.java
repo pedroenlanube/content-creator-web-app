@@ -1,8 +1,8 @@
 package dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.mapper;
 
-import dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.entity.EntityType;
-import dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.entity.SocialMediaLinkEntity;
-import dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.entity.UserEntity;
+import dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.entity.base.EntityType;
+import dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.entity.user.SocialMediaLinkEntity;
+import dev.pedroenlanube.cloudcommons.infrastructure.adapter.out.persistence.entity.user.UserEntity;
 import dev.pedroenlanube.domain.core.model.user.User;
 import dev.pedroenlanube.domain.core.model.user.UserRole;
 import dev.pedroenlanube.domain.core.model.user.SubscriptionTier;

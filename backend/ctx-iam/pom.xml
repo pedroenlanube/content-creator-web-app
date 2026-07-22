@@ -9,7 +9,7 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>ctx-user</artifactId>
+    <artifactId>ctx-iam</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0-SNAPSHOT</version>
 
@@ -35,24 +35,6 @@
             <groupId>dev.pedroenlanube</groupId>
             <artifactId>domain-application</artifactId>
             <version>${domain-application.version}</version>
-        </dependency>
-
-        <!-- AWS dependencies -->
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-lambda-java-events</artifactId>
-            <version>${aws.lambda.events.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-lambda-java-core</artifactId>
-            <version>${aws.lambda.core.version}</version>
-        </dependency>
-
-        <!-- Utilities - Boilerplate -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 
