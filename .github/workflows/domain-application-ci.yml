@@ -1,0 +1,27 @@
+name: Domain Application CI
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+    paths:
+      - 'backend/domain-application/**'
+      - 'backend/pom.xml'
+  pull_request:
+    branches: [ develop, master ]
+    paths:
+      - 'backend/domain-application/**'
+      - 'backend/pom.xml'
+
+permissions:
+  contents: read
+  pull-requests: write
+  statuses: write
+
+jobs:
+  call-ci-workflow:
+    uses: ./.github/workflows/reusable-ci.yml
+    with:
+      module_name: 'domain-application'
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

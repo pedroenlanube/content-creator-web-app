@@ -1,7 +1,7 @@
 package dev.pedroenlanube.ctx.coaching.config;
 
-import dev.pedroenlanube.domain.model.coaching.command.ReserveSessionCmd;
-import dev.pedroenlanube.domain.port.in.strategy.DomainConsumerStrategy;
+import dev.pedroenlanube.domain.core.model.coaching.command.ReserveSessionCmd;
+import dev.pedroenlanube.domain.core.port.in.strategy.DomainConsumerStrategy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

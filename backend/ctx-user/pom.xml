@@ -14,16 +14,30 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <dependencies>
+        <!-- Spring Boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- Own dependencies -->
         <dependency>
             <groupId>dev.pedroenlanube</groupId>
             <artifactId>domain-core</artifactId>
-            <version>${project.version}</version>
+            <version>${domain-core.version}</version>
         </dependency>
         <dependency>
             <groupId>dev.pedroenlanube</groupId>
-            <artifactId>cloud-infrastructure-common</artifactId>
-            <version>${project.version}</version>
+            <artifactId>aws-cloud-adapter</artifactId>
+            <version>${cloud-infrastructure-common.version}</version>
         </dependency>
+        <dependency>
+            <groupId>dev.pedroenlanube</groupId>
+            <artifactId>domain-application</artifactId>
+            <version>${domain-application.version}</version>
+        </dependency>
+
+        <!-- AWS dependencies -->
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-lambda-java-events</artifactId>
@@ -33,10 +47,6 @@
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-lambda-java-core</artifactId>
             <version>${aws.lambda.core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
         <!-- Utilities - Boilerplate -->

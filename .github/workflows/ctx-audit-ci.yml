@@ -1,0 +1,33 @@
+name: Audit Context CI
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+    paths:
+      - 'backend/ctx-audit/**'
+      - 'backend/aws-cloud-adapter/**'
+      - 'backend/domain-core/**'
+      - 'backend/domain-application/**'
+      - 'backend/pom.xml'
+  pull_request:
+    branches: [ develop, master ]
+    paths:
+      - 'backend/ctx-audit/**'
+      - 'backend/aws-cloud-adapter/**'
+      - 'backend/domain-core/**'
+      - 'backend/domain-application/**'
+      - 'backend/pom.xml'
+
+permissions:
+  contents: read
+  pull-requests: write
+  statuses: write
+
+jobs:
+  call-ci-workflow:
+    uses: ./.github/workflows/reusable-ci.yml
+    with:
+      module_name: 'ctx-audit'
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

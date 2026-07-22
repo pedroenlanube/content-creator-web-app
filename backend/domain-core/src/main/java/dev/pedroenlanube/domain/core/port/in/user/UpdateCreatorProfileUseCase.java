@@ -1,0 +1,8 @@
+package dev.pedroenlanube.domain.core.port.in.user;
+
+import dev.pedroenlanube.domain.core.model.user.command.UpdateCreatorProfileCmd;
+
+import java.util.function.Consumer;
+
+public interface UpdateCreatorProfileUseCase extends Consumer<UpdateCreatorProfileCmd> {
+}

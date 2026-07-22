@@ -15,3 +15,16 @@ variable "project_name" {
   type        = string
   default     = "pedroenlanube-serverless-web"
 }
+
+variable "google_client_id" {
+  description = "Client ID provided by the Google Cloud Console for OAuth"
+  type        = string
+  default     = "DUMMY_ID"
+}
+
+variable "google_client_secret" {
+  description = "Client Secret provided by the Google Cloud Console for OAuth"
+  type        = string
+  default     = "DUMMY_SECRET"
+  sensitive   = true
+}
