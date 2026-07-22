@@ -11,6 +11,19 @@ resource "aws_dynamodb_table" "main" {
   hash_key       = "PK"
   range_key      = "SK"
 
+  # Protection against accidental deletion in production
+  deletion_protection_enabled = var.environment == "prod" ? true : false
+
+  # Continuous backups (essential)
+  point_in_time_recovery {
+    enabled = true
+  }
+
+  tags = {
+    Environment = var.environment
+    Context     = "infra-aws-commons"
+  }
+
   # Table attributes
   attribute {
     name = "PK"
@@ -72,4 +85,32 @@ resource "aws_apigatewayv2_stage" "dev" {
   api_id      = aws_apigatewayv2_api.main.id
   name        = var.environment
   auto_deploy = true
+}
+
+# Resource Group
+resource "aws_resourcegroups_group" "main" {
+  name        = "${var.project_name}-group-${var.environment}"
+  description = "Resource group centralizado para el entorno ${var.environment} de ${var.project_name}"
+
+  resource_query {
+    query = jsonencode({
+      ResourceTypeFilters = ["AWS::AllSupported"]
+      TagFilters = [
+        {
+          Key    = "awsApplication"
+          Values = [var.project_name]
+        },
+        {
+          Key    = "user:Environment"
+          Values = [var.environment]
+        }
+      ]
+    })
+  }
+}
+
+# CloudWatch Logs Application Insights
+resource "aws_applicationinsights_application" "main" {
+  resource_group_name = aws_resourcegroups_group.main.name
+  auto_config_enabled = true
 }

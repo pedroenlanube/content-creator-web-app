@@ -43,10 +43,11 @@ module "cognito" {
   project_name = var.project_name
 
   # Conditional logic: If the environment is ‘pro’, use the real domain. Otherwise, use localhost.
-  callback_urls = var.environment == "pro" ? ["https://pedroenlanube.com/api/auth/callback/cognito"] :
-    ["http://localhost:3000/api/auth/callback/cognito"]
-
+  callback_urls = var.environment == "pro" ? ["https://pedroenlanube.com/api/auth/callback/cognito"] : ["http://localhost:3000/api/auth/callback/cognito"]
   logout_urls   = var.environment == "pro" ? ["https://pedroenlanube.com"] : ["http://localhost:3000"]
+
+  google_client_id     = var.google_client_id
+  google_client_secret = var.google_client_secret
 }
 
 # 2. Cognito Integration Service

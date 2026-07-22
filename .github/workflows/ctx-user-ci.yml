@@ -6,15 +6,17 @@ on:
       - 'feature/**'
     paths:
       - 'backend/ctx-user/**'
-      - 'backend/cloud-infrastructure-common/**'
+      - 'backend/aws-cloud-adapter/**'
       - 'backend/domain-core/**'
+      - 'backend/domain-application/**'
       - 'backend/pom.xml'
   pull_request:
     branches: [ develop, master ]
     paths:
       - 'backend/ctx-user/**'
-      - 'backend/cloud-infrastructure-common/**'
+      - 'backend/aws-cloud-adapter/**'
       - 'backend/domain-core/**'
+      - 'backend/domain-application/**'
       - 'backend/pom.xml'
 
 permissions:

@@ -1,0 +1,33 @@
+name: Notifications Context CI
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+    paths:
+      - 'backend/ctx-notifications/**'
+      - 'backend/aws-cloud-adapter/**'
+      - 'backend/domain-core/**'
+      - 'backend/domain-application/**'
+      - 'backend/pom.xml'
+  pull_request:
+    branches: [ develop, master ]
+    paths:
+      - 'backend/ctx-notifications/**'
+      - 'backend/aws-cloud-adapter/**'
+      - 'backend/domain-core/**'
+      - 'backend/domain-application/**'
+      - 'backend/pom.xml'
+
+permissions:
+  contents: read
+  pull-requests: write
+  statuses: write
+
+jobs:
+  call-ci-workflow:
+    uses: ./.github/workflows/reusable-ci.yml
+    with:
+      module_name: 'ctx-notifications'
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

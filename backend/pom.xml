@@ -11,10 +11,18 @@
 
     <modules>
         <module>domain-core</module>
-        <module>cloud-infrastructure-common</module>
-        <module>ctx-content</module>
+        <module>domain-application</module>
+        <module>aws-cloud-adapter</module>
         <module>ctx-coaching</module>
         <module>ctx-user</module>
+        <module>ctx-iam</module>
+        <module>ctx-tiers</module>
+        <module>ctx-billing</module>
+        <module>ctx-community</module>
+        <module>ctx-media</module>
+        <module>ctx-notifications</module>
+        <module>ctx-tenant</module>
+        <module>ctx-audit</module>
     </modules>
 
     <properties>
@@ -28,6 +36,8 @@
 
         <!-- Own dependencies versions -->
         <domain-core.version>1.0.0-SNAPSHOT</domain-core.version>
+        <domain-application.version>1.0.0-SNAPSHOT</domain-application.version>
+        <cloud-infrastructure-common.version>1.0.0-SNAPSHOT</cloud-infrastructure-common.version>
 
         <!-- AWS dependencies version -->
         <aws.lambda.events.version>3.11.4</aws.lambda.events.version>
@@ -91,6 +101,9 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
+                    <configuration>
+                        <argLine>-XX:+EnableDynamicAgentLoading</argLine>
+                    </configuration>
                 </plugin>
 
                 <plugin>

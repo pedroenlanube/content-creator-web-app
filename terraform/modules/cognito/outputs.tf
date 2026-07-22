@@ -1,20 +1,20 @@
 output "user_pool_id" {
-  description = "ID del User Pool de Cognito"
+  description = "Cognito User Pool ID"
   value       = aws_cognito_user_pool.main.id
 }
 
 output "client_id" {
-  description = "ID del Cliente de Cognito"
+  description = "Cognito User Pool Client ID"
   value       = aws_cognito_user_pool_client.web_client.id
 }
 
 output "client_secret" {
-  description = "Secreto del Cliente de Cognito"
+  description = "Cognito User Pool Client Secret"
   value       = aws_cognito_user_pool_client.web_client.client_secret
   sensitive   = true
 }
 
 output "cognito_domain" {
-  description = "Dominio base de Cognito para flujos OAuth"
+  description = "Base domain for Cognito OAuth flows"
   value       = aws_cognito_user_pool_domain.main.domain
 }

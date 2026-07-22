@@ -1,8 +1,8 @@
 package dev.pedroenlanube.ctx.user.adapter.in.lambda.mapper;
 
 import com.amazonaws.services.lambda.runtime.events.CognitoUserPoolPostConfirmationEvent;
-import dev.pedroenlanube.domain.model.user.User;
-import dev.pedroenlanube.domain.model.user.vo.Email;
+import dev.pedroenlanube.domain.core.model.user.User;
+import dev.pedroenlanube.domain.core.model.user.vo.Email;
 import lombok.NoArgsConstructor;
 
 import java.util.Map;

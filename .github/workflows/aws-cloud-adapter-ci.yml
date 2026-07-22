@@ -1,0 +1,29 @@
+name: AWS Cloud Adapter CI
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+    paths:
+      - 'backend/aws-cloud-adapter/**'
+      - 'backend/domain-core/**'
+      - 'backend/pom.xml'
+  pull_request:
+    branches: [ develop, master ]
+    paths:
+      - 'backend/aws-cloud-adapter/**'
+      - 'backend/domain-core/**'
+      - 'backend/pom.xml'
+
+permissions:
+  contents: read
+  pull-requests: write
+  statuses: write
+
+jobs:
+  call-ci-workflow:
+    uses: ./.github/workflows/reusable-ci.yml
+    with:
+      module_name: 'aws-cloud-adapter'
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

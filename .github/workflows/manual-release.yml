@@ -9,7 +9,8 @@ on:
         type: choice
         options:
           - domain-core
-          - cloud-infrastructure-common
+          - domain-application
+          - aws-cloud-adapter
           - ctx-content
           - ctx-coaching
           - ctx-user

@@ -17,3 +17,20 @@ variable "logout_urls" {
   description = "List of permitted URLs for redirecting after logout"
   type        = list(string)
 }
+
+variable "google_client_id" {
+  description = "Client ID provided by the Google Cloud Console for OAuth"
+  type        = string
+}
+
+variable "google_client_secret" {
+  description = "Client Secret provided by the Google Cloud Console for OAuth"
+  type        = string
+  sensitive   = true
+}
+
+# Variable reserved for future integration with Amazon SES
+# variable "ses_domain_identity_arn" {
+#   description = "Domain Identity ARN in Amazon SES for sending emails"
+#   type        = string
+# }

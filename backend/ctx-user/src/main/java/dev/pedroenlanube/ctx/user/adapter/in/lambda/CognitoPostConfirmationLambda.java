@@ -2,7 +2,7 @@ package dev.pedroenlanube.ctx.user.adapter.in.lambda;
 
 import com.amazonaws.services.lambda.runtime.events.CognitoUserPoolPostConfirmationEvent;
 import dev.pedroenlanube.ctx.user.adapter.in.lambda.mapper.CognitoEventPostConfirmationMapper;
-import dev.pedroenlanube.domain.port.in.user.RegisterUserUseCase;
+import dev.pedroenlanube.domain.core.port.in.user.RegisterUserUseCase;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 

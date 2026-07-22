@@ -1,11 +1,11 @@
 package dev.pedroenlanube.ctx.coaching.strategy;
 
-import dev.pedroenlanube.domain.model.coaching.CoachingSession;
-import dev.pedroenlanube.domain.model.coaching.SessionType;
-import dev.pedroenlanube.domain.model.coaching.command.ReserveSessionCmd;
-import dev.pedroenlanube.domain.port.in.strategy.DomainConsumerStrategy;
-import dev.pedroenlanube.domain.port.out.coaching.LoadSessionPort;
-import dev.pedroenlanube.domain.port.out.coaching.SaveSessionPort;
+import dev.pedroenlanube.domain.core.model.coaching.CoachingSession;
+import dev.pedroenlanube.domain.core.model.coaching.SessionType;
+import dev.pedroenlanube.domain.core.model.coaching.command.ReserveSessionCmd;
+import dev.pedroenlanube.domain.core.port.in.strategy.DomainConsumerStrategy;
+import dev.pedroenlanube.domain.core.port.out.coaching.LoadSessionPort;
+import dev.pedroenlanube.domain.core.port.out.coaching.SaveSessionPort;
 import org.springframework.stereotype.Component;
 
 @Component
