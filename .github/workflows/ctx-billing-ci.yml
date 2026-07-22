@@ -1,11 +1,11 @@
-name: Coaching Context CI
+name: Billing Context CI
 
 on:
   push:
     branches:
       - 'feature/**'
     paths:
-      - 'backend/ctx-coaching/**'
+      - 'backend/ctx-billing/**'
       - 'backend/aws-cloud-adapter/**'
       - 'backend/domain-core/**'
       - 'backend/domain-application/**'
@@ -13,7 +13,7 @@ on:
   pull_request:
     branches: [ develop, master ]
     paths:
-      - 'backend/ctx-coaching/**'
+      - 'backend/ctx-billing/**'
       - 'backend/aws-cloud-adapter/**'
       - 'backend/domain-core/**'
       - 'backend/domain-application/**'
@@ -28,6 +28,6 @@ jobs:
   call-ci-workflow:
     uses: ./.github/workflows/reusable-ci.yml
     with:
-      module_name: 'ctx-coaching'
+      module_name: 'ctx-billing'
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

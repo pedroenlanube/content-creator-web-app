@@ -1,22 +1,20 @@
-name: Coaching Context CI
+name: Community Context CI
 
 on:
   push:
     branches:
       - 'feature/**'
     paths:
-      - 'backend/ctx-coaching/**'
+      - 'backend/ctx-content/**'
       - 'backend/aws-cloud-adapter/**'
       - 'backend/domain-core/**'
-      - 'backend/domain-application/**'
       - 'backend/pom.xml'
   pull_request:
     branches: [ develop, master ]
     paths:
-      - 'backend/ctx-coaching/**'
+      - 'backend/ctx-content/**'
       - 'backend/aws-cloud-adapter/**'
       - 'backend/domain-core/**'
-      - 'backend/domain-application/**'
       - 'backend/pom.xml'
 
 permissions:
@@ -28,6 +26,6 @@ jobs:
   call-ci-workflow:
     uses: ./.github/workflows/reusable-ci.yml
     with:
-      module_name: 'ctx-coaching'
+      module_name: 'ctx-community'
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
