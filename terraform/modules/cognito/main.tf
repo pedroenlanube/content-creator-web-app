@@ -63,6 +63,11 @@ resource "aws_cognito_user_pool" "main" {
     mutable                  = true
     name                     = "preferred_username"
     required                 = true
+
+    string_attribute_constraints {
+      min_length = 3
+      max_length = 30
+    }
   }
 
   # Block reserved for Lambda triggers (Post Confirmation y Pre Token Generation)
