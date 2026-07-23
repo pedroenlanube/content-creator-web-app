@@ -38,9 +38,6 @@ class CognitoPostConfirmationLambdaTest {
 
         User savedUser = userCaptor.getValue();
         assertNotNull(savedUser);
-        // Aquí puedes hacer asserts específicos asegurando que el mapper extrajo bien el email, handle, etc.
-
-        // La lambda siempre debe devolver el evento original para que Cognito continúe su flujo
         assertEquals(event, result);
     }
 
@@ -50,8 +47,8 @@ class CognitoPostConfirmationLambdaTest {
                 .withUserName("test-user-id")
                 .withRequest(CognitoUserPoolPostConfirmationEvent.Request.builder()
                         .withUserAttributes(Map.of(
-                                "email", "pedro@example.com",
-                                "custom:handle", "pedroenlanube"
+                                "sub", "user-sub-id1",
+                                "email", "pedro@example.com"
                         ))
                         .build())
                 .build();

@@ -12,7 +12,7 @@ resource "aws_dynamodb_table" "main" {
   range_key      = "SK"
 
   # Protection against accidental deletion in production
-  deletion_protection_enabled = var.environment == "prod" ? true : false
+  deletion_protection_enabled = var.environment == "pro" ? true : false
 
   # Continuous backups (essential)
   point_in_time_recovery {

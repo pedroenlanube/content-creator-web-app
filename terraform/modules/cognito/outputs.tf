@@ -18,3 +18,8 @@ output "cognito_domain" {
   description = "Base domain for Cognito OAuth flows"
   value       = aws_cognito_user_pool_domain.main.domain
 }
+
+output "user_pool_arn" {
+  description = "Cognito User Pool ARN"
+  value       = aws_cognito_user_pool.main.arn
+}

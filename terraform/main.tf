@@ -48,10 +48,23 @@ module "cognito" {
 
   google_client_id     = var.google_client_id
   google_client_secret = var.google_client_secret
+
+  post_confirmation_lambda_arn = module.ctx_user.post_confirmation_lambda_arn
 }
 
-# 2. Cognito Integration Service
-# module "cognito_integration_service" {
-#   source = "./cognito-integration-service"
-#   ...
-# }
+# Context: User
+module "ctx_user" {
+  source = "./modules/ctx-user"
+
+  project_name          = var.project_name
+  environment           = var.environment
+  dynamodb_table_name   = module.shared_infrastructure.dynamodb_table_name
+  dynamodb_table_arn    = module.shared_infrastructure.dynamodb_table_arn
+
+  tags = {
+    awsApplication        = var.project_name
+    "user:Environment"    = var.environment
+    "user:Owner"          = "pedroenlanube"
+    "user:ApplicationName" = "pedroenlanube-serverless-web-dev"
+  }
+}

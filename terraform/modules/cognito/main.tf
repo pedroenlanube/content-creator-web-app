@@ -17,7 +17,7 @@ resource "aws_cognito_user_pool" "main" {
   #   from_email_address    = "Soporte <no-reply@tudominio.com>"
   # }
 
-  alias_attributes         = ["email", "preferred_username"]
+  alias_attributes         = ["email"]
   auto_verified_attributes = ["email"]
 
   password_policy {
@@ -70,11 +70,11 @@ resource "aws_cognito_user_pool" "main" {
     }
   }
 
-  # Block reserved for Lambda triggers (Post Confirmation y Pre Token Generation)
-  # lambda_config {
-  #   post_confirmation    = aws_lambda_function.post_confirmation_handler.arn
-  #   pre_token_generation = aws_lambda_function.pre_token_generation_handler.arn
-  # }
+  # Block for Lambda triggers (Post Confirmation y Pre Token Generation)
+  lambda_config {
+    post_confirmation    = var.post_confirmation_lambda_arn
+  #  pre_token_generation = aws_lambda_function.pre_token_generation_handler.arn
+  }
 
   tags = {
     Name = "${var.project_name}-user-pool-${var.environment}"
@@ -124,4 +124,12 @@ resource "aws_cognito_user_pool_client" "web_client" {
 resource "aws_cognito_user_pool_domain" "main" {
   domain       = "${var.project_name}-auth-${var.environment}"
   user_pool_id = aws_cognito_user_pool.main.id
+}
+
+resource "aws_lambda_permission" "allow_cognito" {
+  statement_id  = "AllowExecutionFromCognito"
+  action        = "lambda:InvokeFunction"
+  function_name = var.post_confirmation_lambda_arn
+  principal     = "cognito-idp.amazonaws.com"
+  source_arn    = aws_cognito_user_pool.main.arn
 }

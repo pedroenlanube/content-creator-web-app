@@ -18,6 +18,11 @@ variable "logout_urls" {
   type        = list(string)
 }
 
+variable "post_confirmation_lambda_arn" {
+  description = "ARN of the Post Confirmation Lambda function"
+  type        = string
+}
+
 variable "google_client_id" {
   description = "Client ID provided by the Google Cloud Console for OAuth"
   type        = string
