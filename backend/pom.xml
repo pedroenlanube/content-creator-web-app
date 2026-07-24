@@ -47,7 +47,7 @@
         <!-- Utilities - Boilerplate -->
         <lombok.version>1.18.46</lombok.version>
 
-        <!-- Utilities- Test Coverage -->
+        <!-- Utilities - Test Coverage -->
         <jacoco.version>0.8.12</jacoco.version>
         <maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
     </properties>
@@ -62,6 +62,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <!-- BOM of Spring Cloud -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -120,6 +121,24 @@
                             </goals>
                             <configuration>
                                 <createDependencyReducedPom>false</createDependencyReducedPom>
+
+                                <artifactSet>
+                                    <excludes>
+                                        <!-- 1. Fuera los clientes pesados de AWS y Apache -->
+                                        <exclude>software.amazon.awssdk:netty-nio-client</exclude>
+                                        <exclude>software.amazon.awssdk:apache5-client</exclude>
+                                        <exclude>org.apache.httpcomponents.client5:*</exclude>
+                                        <exclude>org.apache.httpcomponents.core5:*</exclude>
+
+                                        <!-- 2. Fuera los servidores web embebidos y binarios nativos -->
+                                        <exclude>io.netty:*</exclude>
+                                        <exclude>io.projectreactor.netty:*</exclude>
+                                        <exclude>org.springframework.boot:spring-boot-starter-webflux</exclude>
+                                        <exclude>org.springframework.boot:spring-boot-starter-reactor-netty</exclude>
+                                        <exclude>org.springframework.boot:spring-boot-starter-tomcat</exclude>
+                                    </excludes>
+                                </artifactSet>
+
                                 <filters>
                                     <filter>
                                         <artifact>*:*</artifact>
@@ -142,8 +161,22 @@
                                     <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
                                         <resource>META-INF/spring.factories</resource>
                                     </transformer>
+
+                                    <!-- ¡LA LÍNEA MÁGICA PARA TU VERSIÓN DE SPRING BOOT! -->
+                                    <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                        <resource>META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports</resource>
+                                    </transformer>
+
+                                    <!-- Por si acaso también hay colisión de handlers -->
+                                    <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                        <resource>META-INF/spring.handlers</resource>
+                                    </transformer>
+                                    <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                        <resource>META-INF/spring.schemas</resource>
+                                    </transformer>
+
                                     <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                        <!-- Delegamos la clase principal al módulo hijo -->
+                                        <!-- We delegate the main class to the child module -->
                                         <mainClass>${start-class}</mainClass>
                                     </transformer>
                                 </transformers>

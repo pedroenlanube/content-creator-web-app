@@ -8,6 +8,9 @@ import java.lang.annotation.*;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import({UserDynamoRepositoryAdapter.class})
+@Import({
+        DynamoDbConfig.class,
+        UserDynamoRepositoryAdapter.class
+})
 public @interface EnableCloudInfrastructure {
 }

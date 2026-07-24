@@ -4,6 +4,7 @@ import com.amazonaws.services.lambda.runtime.events.CognitoUserPoolPostConfirmat
 import dev.pedroenlanube.ctx.user.adapter.in.lambda.mapper.CognitoEventPostConfirmationMapper;
 import dev.pedroenlanube.domain.core.port.in.user.RegisterUserUseCase;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Optional;
@@ -13,6 +14,7 @@ import java.util.function.Function;
 @Configuration
 public class CognitoPostConfirmationLambda {
 
+    @Bean
     public Function<CognitoUserPoolPostConfirmationEvent, CognitoUserPoolPostConfirmationEvent>
     postConfirmation(RegisterUserUseCase registerUserUseCase) {
         return event -> Optional.ofNullable(event)

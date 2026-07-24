@@ -25,27 +25,27 @@ public abstract class BaseDynamoEntity {
     private Instant createdAt;
 
     @DynamoDbPartitionKey
-    @DynamoDbAttribute("pk")
+    @DynamoDbAttribute("PK")
     public String getPk() { return pk; }
 
     @DynamoDbSortKey
-    @DynamoDbAttribute("sk")
+    @DynamoDbAttribute("SK")
     public String getSk() { return sk; }
 
     @DynamoDbSecondaryPartitionKey(indexNames = {"GSI1"})
-    @DynamoDbAttribute("gsi1pk")
+    @DynamoDbAttribute("GSI1PK")
     public String getGsi1pk() { return gsi1pk; }
 
     @DynamoDbSecondarySortKey(indexNames = {"GSI1"})
-    @DynamoDbAttribute("gsi1sk")
+    @DynamoDbAttribute("GSI1SK")
     public String getGsi1sk() { return gsi1sk; }
 
     @DynamoDbSecondaryPartitionKey(indexNames = {"GSI2"})
-    @DynamoDbAttribute("gsi2pk")
+    @DynamoDbAttribute("GSI2PK")
     public String getGsi2pk() { return gsi2pk; }
 
     @DynamoDbSecondarySortKey(indexNames = {"GSI2"})
-    @DynamoDbAttribute("gsi2sk")
+    @DynamoDbAttribute("GSI2SK")
     public String getGsi2sk() { return gsi2sk; }
 
     @DynamoDbAttribute("entityType")
