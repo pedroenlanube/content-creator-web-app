@@ -38,8 +38,8 @@ module "shared_infrastructure" {
 
 # Cognito as Identity Provider
 module "cognito" {
-  source = "./modules/cognito"
-  environment  = var.environment
+  source      = "./modules/cognito"
+  environment = var.environment
   project_name = var.project_name
 
   # Conditional logic: If the environment is ‘pro’, use the real domain. Otherwise, use localhost.
@@ -49,7 +49,9 @@ module "cognito" {
   google_client_id     = var.google_client_id
   google_client_secret = var.google_client_secret
 
-  post_confirmation_lambda_arn = module.ctx_user.post_confirmation_lambda_arn
+  post_confirmation_lambda_arn  = module.ctx_user.post_confirmation_lambda_arn
+  post_confirmation_alias_name  = module.ctx_user.post_confirmation_alias_name
+  post_confirmation_lambda_name = module.ctx_user.post_confirmation_lambda_name
 }
 
 # Context: User

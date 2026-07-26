@@ -4,7 +4,7 @@ module "post_confirmation_lambda" {
   function_name = "${var.project_name}-post-confirmation-${var.environment}"
   handler       = "org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest"
   runtime       = "java21"
-  memory_size   = 512
+  memory_size   = 1024
   timeout       = 15
 
   zip_file      = "../backend/ctx-user/target/ctx-user-1.0.0-SNAPSHOT.jar"
@@ -18,7 +18,7 @@ module "post_confirmation_lambda" {
     MAIN_CLASS                       = "dev.pedroenlanube.ctx.user.CtxUserConfiguration"
 
     # 3. JVM's and Spring hardcore configuration
-    JAVA_TOOL_OPTIONS                = "-XX:+UseSerialGC -Xmx512m -XX:+TieredCompilation -XX:TieredStopAtLevel=1"
+    JAVA_TOOL_OPTIONS                = "-XX:+UseSerialGC -Xmx850m"
     SPRING_JMX_ENABLED               = "false"
     SPRING_MAIN_BANNER_MODE          = "off"
   }
@@ -31,7 +31,8 @@ module "post_confirmation_lambda" {
       Action = [
         "dynamodb:PutItem",
         "dynamodb:UpdateItem",
-        "dynamodb:TransactWriteItems"
+        "dynamodb:TransactWriteItems",
+        "dynamodb:GetItem"
       ]
       Resource = var.dynamodb_table_arn
     }

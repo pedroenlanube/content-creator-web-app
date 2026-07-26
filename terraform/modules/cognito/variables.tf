@@ -23,6 +23,16 @@ variable "post_confirmation_lambda_arn" {
   type        = string
 }
 
+variable "post_confirmation_lambda_name" {
+  description = "Base name of the Post Confirmation Lambda function"
+  type        = string
+}
+
+variable "post_confirmation_alias_name" {
+  description = "Alias name for the Post Confirmation Lambda function"
+  type        = string
+}
+
 variable "google_client_id" {
   description = "Client ID provided by the Google Cloud Console for OAuth"
   type        = string
