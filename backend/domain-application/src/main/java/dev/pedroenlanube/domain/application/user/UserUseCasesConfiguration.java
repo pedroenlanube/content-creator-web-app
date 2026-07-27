@@ -2,13 +2,15 @@ package dev.pedroenlanube.domain.application.user;
 
 import dev.pedroenlanube.domain.core.port.in.user.RegisterUserUseCase;
 import dev.pedroenlanube.domain.core.port.out.user.SaveUserPort;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
+import jakarta.enterprise.inject.Produces;
 
-@Configuration
+@Dependent
 public class UserUseCasesConfiguration {
 
-    @Bean
+    @Produces
+    @ApplicationScoped
     public RegisterUserUseCase registerUserUseCase(SaveUserPort saveUserPort) {
         return saveUserPort::accept;
     }

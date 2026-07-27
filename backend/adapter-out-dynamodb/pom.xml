@@ -9,7 +9,7 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>domain-application</artifactId>
+    <artifactId>adapter-out-dynamodb</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0-SNAPSHOT</version>
 
@@ -21,16 +21,20 @@
             <version>${domain-core.version}</version>
         </dependency>
 
-        <!-- 2. Sustituto de spring-context: API estándar de CDI -->
-        <!-- Usamos 'provided' para que no engorde tu .jar. Quarkus inyectará su implementación (Arc) en la build final -->
+        <!-- 2. La extensión oficial de Quarkus para DynamoDB -->
+        <!-- Usa el AWS SDK v2 por debajo, pero optimizado para Cold Starts y GraalVM -->
         <dependency>
-            <groupId>jakarta.enterprise</groupId>
-            <artifactId>jakarta.enterprise.cdi-api</artifactId>
-            <scope>provided</scope>
+            <groupId>io.quarkiverse.amazonservices</groupId>
+            <artifactId>quarkus-amazon-dynamodb</artifactId>
         </dependency>
 
-        <!-- 3. Sustituto de spring-boot-starter-test: Testing puro y rápido -->
-        <!-- Al no cargar el contexto de Spring, tus tests volarán -->
+        <!-- (Opcional) Si usas el Enhanced Client (mapeo de objetos a tablas) -->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>dynamodb-enhanced</artifactId>
+        </dependency>
+
+        <!-- 3. Testing -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -50,6 +54,18 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <scope>test</scope>
+        </dependency>
+        <!-- Para levantar el micro-contexto CDI en los tests del adaptador -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-junit5-component</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Utilities - Boilerplate -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 
